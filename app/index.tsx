@@ -1,7 +1,12 @@
-import { Button, Text } from "@ui-kitten/components";
+import { useState } from "react";
 import { View } from "react-native";
+import { Button, Text } from "@ui-kitten/components";
+
+import ModalComponent from "@/components/Modal";
 
 export default function Index() {
+  const [modalVisible, setModalVisible] = useState(false);
+
   return (
     <View
       style={{
@@ -12,7 +17,12 @@ export default function Index() {
     >
       <Text appearance="hint">Edit app/index.tsx to edit this screen.</Text>
 
-      <Button>Click Me</Button>
+      <Button onPress={() => setModalVisible(true)}>Click Me</Button>
+
+      <ModalComponent
+        visible={modalVisible}
+        onClose={() => setModalVisible(false)}
+      />
     </View>
   );
 }
